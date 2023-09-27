@@ -52,9 +52,11 @@ cv_estimate_ct <- function(
   full_data_fit <- estimate_ct(
     y = y,
     korder = korder,
+    dist_gamma = dist_gamma,
     x = xin,
     lambda = lambda,
     maxiter = maxiter,
+    delay_distn = delay_distn,
     ...)
 
   if (is.null(lambda)) lambda <- full_data_fit$lambda
@@ -75,8 +77,9 @@ cv_estimate_ct <- function(
 
     mod <- estimate_ct(
       y = y[train_idx],
-      x = x[train_idx],
       korder = korder,
+      dist_gamma = dist_gamma,
+      x = x[train_idx],
       lambda = lambda,
       maxiter = maxiter,
       delay_distn = delay_distn,
