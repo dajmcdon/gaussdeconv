@@ -3,10 +3,8 @@
 #'
 #' This function solves the smoothness penalized Gaussian
 #' regression (trend filtering) of the form:
-#'
-#' \eqn{\hat{\theta} = argmin_{\theta} (\frac{1}{n} \sum_{i=1}^n (y_i
-#' #'   - \theta_i w_i)^2 + \lambda||D^{(k+1)}\theta||_1, }
-#'
+#' \deqn{\hat{\theta} = \arg\min_{\theta} \frac{1}{n} \sum_{i=1}^n (y_i -
+#' \theta_i w_i)^2 + \lambda||D^{(k+1)}\theta||_1, }
 #' where \eqn{y_i} are the observations at day
 #' \eqn{i}, \eqn{w_i} are the weighted past observations at day \eqn{i},
 #' convolved with a delay distribution (a gamma density by default),
@@ -157,7 +155,7 @@ estimate_ct <- function(
     list(
       y = y,
       x = xin,
-      convloved = convolved,
+      convolved = convolved,
       ct = mod$ct,
       lambda = drop(mod$lambda),
       korder = mod$korder,

@@ -76,7 +76,7 @@ An object with S3 class \code{smoothed_mult}. Among the list components:
 \item \code{y} the observations
 \item \code{x} a vector of positions at which the counts have been observed.
 \item \code{convolved} the weighted sum of past \code{y}.
-\item \code{ct} the estimated smoothed ratio This is a matrix with
+\item \code{ct} the estimated smoothed ratio. This is a matrix with
 each column corresponding to one value of \code{lambda}.
 \item \code{lambda} the values of \code{lambda} actually used in the algorithm.
 \item \code{korder} degree of the estimated piecewise polynomial curve.
@@ -89,11 +89,8 @@ than the maximum number of iterations for the estimation algorithm.
 \description{
 This function solves the smoothness penalized Gaussian
 regression (trend filtering) of the form:
-}
-\details{
-\eqn{\hat{\theta} = argmin_{\theta} (\frac{1}{n} \sum_{i=1}^n (y_i
-#'   - \theta_i w_i)^2 + \lambda||D^{(k+1)}\theta||_1, }
-
+\deqn{\hat{\theta} = \arg\min_{\theta} \frac{1}{n} \sum_{i=1}^n (y_i -
+\theta_i w_i)^2 + \lambda||D^{(k+1)}\theta||_1, }
 where \eqn{y_i} are the observations at day
 \eqn{i}, \eqn{w_i} are the weighted past observations at day \eqn{i},
 convolved with a delay distribution (a gamma density by default),
@@ -106,6 +103,6 @@ y <- c(1, rnorm(100, dnorm(1:100, 50, 15) * 500 + 1))
 out <- estimate_ct(y)
 plot(out)
 
-out0 <- estimate_ct(y, korder = 1L, nsol = 10)
+out0 <- estimate_ct(y, korder = 0L)
 plot(out0)
 }
